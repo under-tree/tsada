@@ -1,7 +1,7 @@
 <template>
   <div
     ref="chartContainer"
-    style="width: 800px; height: 400px;"
+    style="width: 100%; height: 100%;"
   ></div>
 </template>
 
@@ -33,6 +33,34 @@ const data = [
   [19, -0.3557156400591761],
 ]
 
+const markLineData = [
+  {
+    xAxis: '5',
+  },
+  {
+    xAxis: '6'
+  },
+]
+
+const markAreaData = [
+  [
+    {
+      xAxis: '10',
+    },
+    {
+      xAxis: '11'
+    }
+  ],
+  [
+    {
+      xAxis: '15',
+    },
+    {
+      xAxis: '16'
+    }
+  ],
+]
+
 const chartContainer = ref(null)
 
 onMounted(() => {
@@ -43,7 +71,19 @@ onMounted(() => {
         type: 'line',
         smooth: true,
         symbolSize: 10,
-        data: data
+        data: data,
+        markLine: {
+          itemStyle: {
+            color: 'rgb(255, 175, 175)'
+          },
+          data: markLineData
+        },
+        markArea: {
+          itemStyle: {
+            color: 'rgba(255, 175, 175, 0.5)'
+          },
+          data: markAreaData
+        },
       },
     ],
     xAxis: {

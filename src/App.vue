@@ -1,9 +1,9 @@
 <script setup>
-import TimeSeriesChart from './components/TimeSeriesChart.vue'
+import Home from './pages/Home.vue'
 </script>
 
 <template>
-  <TimeSeriesChart />
+  <Home />
 </template>
 
 <style scoped></style>
