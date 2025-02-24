@@ -1,16 +1,19 @@
 export const markLineData = [
-  { xAxis: '5' },
-  { xAxis: '6' },
+  { xAxis: '106' },
+  { xAxis: '385' },
+  { xAxis: '519' },
+  { xAxis: '584' },
+  { xAxis: '748' },
 ]
 
 export const markAreaData = [
   [
-    { xAxis: '10' },
-    { xAxis: '11' },
+    { xAxis: '628' },
+    { xAxis: '673' },
   ],
   [
-    { xAxis: '15' },
-    { xAxis: '16' },
+    { xAxis: '836' },
+    { xAxis: '895' },
   ],
 ]
 
