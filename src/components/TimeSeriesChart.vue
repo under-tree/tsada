@@ -2,10 +2,10 @@
 
   <div class="flex items-center space-x-4">
     <span>点异常：{{ pointAnomalyCount }}，区间异常：{{ areaAnomalyCount }}</span>
-    <button @click="focusNextAnomaly">寻找异常</button>
+    <el-button @click="focusNextAnomaly">寻找异常</el-button>
     <span v-if="currentAnomalyLabel">当前异常：{{ currentAnomalyLabel }}</span>
-    <button @click="focusPreviousAnomaly">上一个</button>
-    <button @click="focusNextAnomaly">下一个</button>
+    <el-button @click="focusPreviousAnomaly">上一个</el-button>
+    <el-button @click="focusNextAnomaly">下一个</el-button>
   </div>
 
   <div
