@@ -4,7 +4,7 @@ import TimeSeriesChart from '../components/TimeSeriesChart.vue'
 
 <template>
 
-  <div class="h-[80svh] w-4/5 m-8 p-8 b-1 border-solid">
+  <div class="h-[80svh] w-4/5 p-8">
     <TimeSeriesChart />
   </div>
 
