@@ -82,15 +82,15 @@ const ZOOM_WIDTH = 100
 const SIMULATION_TIME = 2000
 
 const detectionResults = {
-  AER: [106, 385, 519, 584, 748],
-  VAE: [106, 519, 584, 748, [836, 895]],
   ARIMA: [106, 385, 584, 748, [628, 673]],
+  TadGAN: [106, 519, 584, 748, [836, 895]],
+  AER: [106, 385, 519, 584, 748],
 }
 
 const algorithmColors = {
-  AER: 'rgb(255, 48, 55)',
-  VAE: 'rgb(255, 214, 10)',
   ARIMA: 'rgb(50, 209, 88)',
+  TadGAN: 'rgb(255, 214, 10)',
+  AER: 'rgb(255, 48, 55)',
 }
 
 const value = ref('')
@@ -165,9 +165,9 @@ const updateChart = () => {
   myChart.setOption({
     grid: {
       left: '5%',
-      right: '5%',
+      right: '7.5%',
       top: '5%',
-      bottom: '10%'
+      bottom: '15%'
     },
     series: [{
       type: 'line',
