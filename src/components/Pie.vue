@@ -51,13 +51,33 @@ onMounted(() => {
 
   myChart.setOption(option)
 })
+
+const width = ref(5)
 </script>
 
 <template>
-  <div
-    class="h-[80vh]"
-    ref="chartContainer"
-  ></div>
+
+  <div class="h-[80vh]">
+
+    <div
+      class="h-full"
+      ref="chartContainer"
+    ></div>
+
+    <el-slider
+      class="slider"
+      v-model="width"
+      :min="1"
+      :max="10"
+    />
+
+  </div>
+
 </template>
 
-<style scoped></style>
+<style scoped>
+.slider {
+  width: 20%;
+  margin: 0 auto;
+}
+</style>
