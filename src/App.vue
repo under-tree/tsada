@@ -35,6 +35,16 @@
       </el-link>
     </router-link>
 
+    <router-link to="/datasets">
+      <el-link
+        class="text-2xl"
+        type="primary"
+        :underline="false"
+      >
+        Datasets
+      </el-link>
+    </router-link>
+
   </el-space>
   <!-- </div> -->
   <router-view></router-view>
