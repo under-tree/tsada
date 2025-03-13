@@ -45,6 +45,16 @@
       </el-link>
     </router-link>
 
+    <router-link to="/editor">
+      <el-link
+        class="text-2xl"
+        type="primary"
+        :underline="false"
+      >
+        Editor
+      </el-link>
+    </router-link>
+
   </el-space>
   <!-- </div> -->
   <router-view></router-view>
