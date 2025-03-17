@@ -417,22 +417,39 @@ function initDrag() {
   function updateRawData() {
     var flightData = _rawData.flight.data
     var movingItem = flightData[_draggingRecord.dataIndex]
-    for (var i = 0; i < flightData.length; i++) {
-      var dataItem = flightData[i]
-      if (
-        dataItem !== movingItem &&
-        _dropRecord.categoryIndex === dataItem[DIM_CATEGORY_INDEX] &&
-        _dropRecord.timeArrival < dataItem[DIM_TIME_DEPARTURE] &&
-        _dropRecord.timeDeparture > dataItem[DIM_TIME_ARRIVAL]
-      ) {
-        _dropRecord.timeArrival = dataItem[DIM_TIME_DEPARTURE]
-        _dropRecord.timeDeparture = _dropRecord.timeArrival + _draggingTimeLength
-        break
+    var hasConflict = true
+    var attempts = 0
+
+    while (hasConflict && attempts++ < 3) {
+      hasConflict = false
+      for (const dataItem of flightData) {
+        if (dataItem === movingItem) continue
+
+        const hasTimeConflict = _dropRecord.timeArrival < dataItem[DIM_TIME_DEPARTURE] &&
+          _dropRecord.timeDeparture > dataItem[DIM_TIME_ARRIVAL]
+
+        if (!hasTimeConflict) continue
+
+        if ((dataItem[4] !== movingItem[4]) ||
+          (dataItem[4] === movingItem[4] && _dropRecord.categoryIndex === dataItem[DIM_CATEGORY_INDEX])) {
+          hasConflict = true
+          _dropRecord.timeArrival = dataItem[DIM_TIME_DEPARTURE]
+          _dropRecord.timeDeparture = _dropRecord.timeArrival + _draggingTimeLength
+          break
+        }
       }
     }
-    movingItem[DIM_CATEGORY_INDEX] = _dropRecord.categoryIndex
-    movingItem[DIM_TIME_ARRIVAL] = _dropRecord.timeArrival
-    movingItem[DIM_TIME_DEPARTURE] = _dropRecord.timeDeparture
+
+    if (hasConflict) {
+      Object.assign(_dropRecord, _draggingRecord)
+    }
+
+    Object.assign(movingItem, {
+      [DIM_CATEGORY_INDEX]: _dropRecord.categoryIndex,
+      [DIM_TIME_ARRIVAL]: Math.round(_dropRecord.timeArrival),
+      [DIM_TIME_DEPARTURE]: Math.round(_dropRecord.timeDeparture)
+    })
+
     return true
   }
   function autoDataZoomWhenDraggingOutside(cursorX, cursorY) {
