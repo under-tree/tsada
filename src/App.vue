@@ -55,6 +55,26 @@
       </el-link>
     </router-link>
 
+    <router-link to="/demo-a">
+      <el-link
+        class="text-2xl"
+        type="primary"
+        :underline="false"
+      >
+        Demo A
+      </el-link>
+    </router-link>
+
+    <router-link to="/demo-b">
+      <el-link
+        class="text-2xl"
+        type="primary"
+        :underline="false"
+      >
+        Demo B
+      </el-link>
+    </router-link>
+
   </el-space>
   <!-- </div> -->
   <router-view></router-view>
