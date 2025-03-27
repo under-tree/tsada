@@ -23,8 +23,8 @@ const createChartOption = (timeseries) => {
 
   timeseries.forEach((seriesData, index) => {
     grids.push({
-      left: '5%',
-      right: '7.5%',
+      left: '0%',
+      right: '0%',
       top: `${5 + index * (85 / gridCount)}%`,
       height: `${85 / gridCount}%`,
     })
