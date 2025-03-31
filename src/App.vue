@@ -15,7 +15,7 @@
       </el-link>
     </router-link>
 
-    <router-link to="/radar">
+    <!-- <router-link to="/radar">
       <el-link
         class="text-2xl"
         type="primary"
@@ -23,7 +23,7 @@
       >
         Radar
       </el-link>
-    </router-link>
+    </router-link> -->
 
     <router-link to="/grid">
       <el-link

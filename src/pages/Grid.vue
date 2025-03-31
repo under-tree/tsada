@@ -1,6 +1,7 @@
 <script setup>
 import SingleTimeSeriseChart from '../components/SingleTimeSeriseChart.vue'
 import MultipleTimeSeriseChart from '../components/MultipleTimeSeriseChart.vue'
+import Radar from '../components/Radar.vue'
 import { ref } from 'vue'
 import { data } from '../components/data'
 
@@ -163,7 +164,11 @@ const options2 = Object.keys(datasets).map(key => ({ value: key, label: key }))
       </el-col>
 
       <el-col :span="8">
-        <el-card class="h-80"></el-card>
+        <el-card class="h-80">
+          <div class="h-80">
+            <Radar />
+          </div>
+        </el-card>
       </el-col>
 
     </el-row>
