@@ -25,7 +25,7 @@
       </el-link>
     </router-link>
 
-    <router-link to="/pie">
+    <!-- <router-link to="/pie">
       <el-link
         class="text-2xl"
         type="primary"
@@ -33,7 +33,7 @@
       >
         Pie
       </el-link>
-    </router-link>
+    </router-link> -->
 
     <router-link to="/datasets">
       <el-link
@@ -52,6 +52,16 @@
         :underline="false"
       >
         Editor
+      </el-link>
+    </router-link>
+
+    <router-link to="/demo">
+      <el-link
+        class="text-2xl"
+        type="primary"
+        :underline="false"
+      >
+        Demo
       </el-link>
     </router-link>
 
