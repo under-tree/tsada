@@ -25,6 +25,16 @@
       </el-link>
     </router-link>
 
+    <router-link to="/grid">
+      <el-link
+        class="text-2xl"
+        type="primary"
+        :underline="false"
+      >
+        Grid
+      </el-link>
+    </router-link>
+
     <!-- <router-link to="/pie">
       <el-link
         class="text-2xl"
