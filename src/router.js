@@ -8,6 +8,7 @@ import DataEditor from './components/DataEditor.vue'
 import Demo from './components/Demo.vue'
 import DemoA from './pages/DemoA.vue'
 import DemoB from './pages/DemoB.vue'
+import DemoC from './pages/DemoC.vue'
 
 const routes = [
   { 'path': '/', 'component': Home },
@@ -19,6 +20,7 @@ const routes = [
   { 'path': '/demo', 'component': Demo },
   { 'path': '/demo-a', 'component': DemoA },
   { 'path': '/demo-b', 'component': DemoB },
+  { 'path': '/demo-c', 'component': DemoC },
 ]
 
 const router = createRouter({

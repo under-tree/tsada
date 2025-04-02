@@ -95,6 +95,16 @@
       </el-link>
     </router-link>
 
+    <router-link to="/demo-c">
+      <el-link
+        class="text-2xl"
+        type="primary"
+        :underline="false"
+      >
+        Demo C
+      </el-link>
+    </router-link>
+
   </el-space>
   <!-- </div> -->
   <router-view></router-view>
