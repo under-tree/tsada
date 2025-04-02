@@ -194,6 +194,39 @@ const options2 = Object.keys(datasets).map(key => ({ value: key, label: key }))
 
     </el-row>
 
+    <el-row :gutter="16">
+      <el-col :span="16">
+        <el-card class="h-37.5">
+          <el-steps
+            class="mt-8"
+            :active="1"
+            align-center
+          >
+            <el-step title="导入数据"><template #icon>
+                <div class="i-ep-download text-2xl" />
+              </template> </el-step>
+            <el-step title="选择模型"><template #icon>
+                <div class="i-ep-set-up text-2xl" />
+              </template> </el-step>
+            <el-step title="查看异常"><template #icon>
+                <div class="i-ep-search text-2xl" />
+              </template> </el-step>
+            <el-step title="分析性能"><template #icon>
+                <div class="i-ep-data-analysis text-2xl" />
+              </template> </el-step>
+          </el-steps>
+        </el-card>
+      </el-col>
+      <el-col :span="4">
+        <el-card class="h-37.5">
+        </el-card>
+      </el-col>
+      <el-col :span="4">
+        <el-card class="h-37.5">
+        </el-card>
+      </el-col>
+    </el-row>
+
   </div>
 </template>
 
