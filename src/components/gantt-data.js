@@ -1,3 +1,6 @@
+/**
+ * parkingApron 是停机坪数据，缺少停机坪序号，程序读取数据时自动编号。flight 是航班数据。
+ */
 export const data = {
   "parkingApron": {
     "dimensions": [

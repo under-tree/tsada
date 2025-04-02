@@ -12,17 +12,21 @@ let myChart = null
 let resizeObserver = null
 
 let HEIGHT_RATIO = 0.6
-let DIM_CATEGORY_INDEX = 0
-let DIM_TIME_ARRIVAL = 1
-let DIM_TIME_DEPARTURE = 2
-let DATA_ZOOM_AUTO_MOVE_THROTTLE = 30
-let DATA_ZOOM_X_INSIDE_INDEX = 1
-let DATA_ZOOM_Y_INSIDE_INDEX = 3
-let DATA_ZOOM_AUTO_MOVE_SPEED = 0.2
-let DATA_ZOOM_AUTO_MOVE_DETECT_AREA_WIDTH = 30
+// 索引，用于 data 的 encode
+const DIM_CATEGORY_INDEX = 0 // 停机坪序号
+const DIM_TIME_ARRIVAL = 1
+const DIM_TIME_DEPARTURE = 2
+// 对应 dataZoom 中的 insideX 和 insideY
+const DATA_ZOOM_X_INSIDE_INDEX = 1
+const DATA_ZOOM_Y_INSIDE_INDEX = 3
+// 自动调整数据缩放
+const DATA_ZOOM_AUTO_MOVE_THROTTLE = 30 // 节流，echarts.throttle 的参数
+const DATA_ZOOM_AUTO_MOVE_SPEED = 0.2
+const DATA_ZOOM_AUTO_MOVE_DETECT_AREA_WIDTH = 30
+
 let _draggable
-let _draggingEl
-let _dropShadow
+let _draggingEl // 拖拽的元素
+let _dropShadow // 拖拽的阴影
 let _draggingCursorOffset = [0, 0]
 let _draggingTimeLength
 let _draggingRecord
@@ -143,9 +147,10 @@ const createChartOption = () => {
         type: 'custom',
         renderItem: renderGanttItem,
         dimensions: _rawData.flight.dimensions,
+        // 到达时间和离开时间都可以映射至 x 轴
         encode: {
           x: [DIM_TIME_ARRIVAL, DIM_TIME_DEPARTURE],
-          y: DIM_CATEGORY_INDEX,
+          y: DIM_CATEGORY_INDEX, // 停机坪序号
           tooltip: [DIM_CATEGORY_INDEX, DIM_TIME_ARRIVAL, DIM_TIME_DEPARTURE]
         },
         data: _rawData.flight.data
@@ -202,9 +207,12 @@ onUnmounted(() => {
 })
 
 function renderGanttItem(params, api) {
-  let categoryIndex = api.value(DIM_CATEGORY_INDEX)
+  // 运行时每个 Item 都对应一个渲染函数
+  let categoryIndex = api.value(DIM_CATEGORY_INDEX) // 获得停机坪序号（的数值）
+  // 传入数值获得坐标
   let timeArrival = api.coord([api.value(DIM_TIME_ARRIVAL), categoryIndex])
   let timeDeparture = api.coord([api.value(DIM_TIME_DEPARTURE), categoryIndex])
+
   let coordSys = params.coordSys
   _cartesianXBounds[0] = coordSys.x
   _cartesianXBounds[1] = coordSys.x + coordSys.width
@@ -213,6 +221,7 @@ function renderGanttItem(params, api) {
   let barLength = timeDeparture[0] - timeArrival[0]
   // Get the heigth corresponds to length 1 on y axis.
   let barHeight = api.size([0, 1])[1] * HEIGHT_RATIO
+
   let x = timeArrival[0]
   let y = timeArrival[1] - barHeight
   let flightNumber = api.value(3) + ''
@@ -277,12 +286,13 @@ function renderAxisLabelItem(params, api) {
     type: 'group',
     position: [10, y],
     children: [
+      // 停机坪序号的背景（图标）
       {
         type: 'path',
         shape: {
           d: 'M0,0 L0,-20 L30,-20 C42,-20 38,-1 50,-1 L70,-1 L70,0 Z',
           x: 0,
-          y: -20,
+          y: -20, // 绝对值增大时向上移动
           width: 90,
           height: 20,
           layout: 'cover'
@@ -291,6 +301,7 @@ function renderAxisLabelItem(params, api) {
           fill: '#368c6c'
         }
       },
+      // 停机坪序号
       {
         type: 'text',
         style: {
@@ -302,6 +313,7 @@ function renderAxisLabelItem(params, api) {
           textFill: '#fff'
         }
       },
+      // 停机坪类型
       {
         type: 'text',
         style: {
@@ -452,12 +464,14 @@ function initDrag() {
       _dropShadow = addOrUpdateBar(_dropShadow, _dropRecord, style, 99)
     }
   }
-  // This is some business logic, don't care about it.
+  // 移动 Item 后松开时调用
   function updateRawData() {
     let flightData = _rawData.flight.data
     let movingItem = flightData[_draggingRecord.dataIndex]
     // Check conflict
     for (let i = 0; i < flightData.length; i++) {
+      // 遍历所有航班，判断同一停机坪的航班是否有时间冲突
+      // （_dropRecord 在 dragRelease 函数中更新）
       let dataItem = flightData[i]
       if (
         dataItem !== movingItem &&
