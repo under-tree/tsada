@@ -18,7 +18,7 @@ const createChartOption = (timeseries) => {
   return {
     grid: {
       left: '5%',
-      right: '7.5%',
+      right: '5%',
       top: '5%',
       bottom: '15%',
     },
@@ -39,7 +39,7 @@ const createChartOption = (timeseries) => {
     },
     dataZoom: [
       { type: 'slider', xAxisIndex: 0, filterMode: 'none', startValue: 0, endValue: 100 },
-      { type: 'slider', yAxisIndex: 0, filterMode: 'none' },
+      { type: 'slider', yAxisIndex: 0, filterMode: 'none', width: 10 },
       { type: 'inside', xAxisIndex: 0, filterMode: 'none' }
     ],
     tooltip: {
