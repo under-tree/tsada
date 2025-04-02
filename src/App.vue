@@ -55,6 +55,16 @@
       </el-link>
     </router-link>
 
+    <router-link to="/gantt">
+      <el-link
+        class="text-2xl"
+        type="primary"
+        :underline="false"
+      >
+        Gantt
+      </el-link>
+    </router-link>
+
     <router-link to="/editor">
       <el-link
         class="text-2xl"
