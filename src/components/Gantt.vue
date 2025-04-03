@@ -485,6 +485,11 @@ function initDrag() {
       _dropRecord.categoryIndex >= _rawData.parkingApron.data.length ||
       _dropRecord.timeArrival < 0) {
       flightData.splice(_draggingRecord.dataIndex, 1)
+      ElMessage({
+        message: '删除成功',
+        type: 'success',
+        duration: 1000,
+      })
       return true
     }
     let hasConflict = true
