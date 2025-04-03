@@ -7,12 +7,38 @@ const props = defineProps({
     type: Array,
     required: true,
     validator: (value) => value.length > 0 && Array.isArray(value[0])
-  }
+  },
+  anomalies: {
+    type: Array,
+  },
 })
+
+let { markLineData, markAreaData } = convertAnomalies(props.anomalies)
 
 const chartContainer = ref(null)
 let myChart = null
 let resizeObserver = null
+
+function convertAnomalies(anomalies) {
+  let markLineData = []
+  let markAreaData = []
+
+  anomalies.forEach((anomaly) => {
+    if (anomaly.length === 1) {
+      markLineData.push({ xAxis: String(anomaly[0]) })
+    } else if (anomaly.length === 2) {
+      markAreaData.push([
+        { xAxis: String(anomaly[0]) },
+        { xAxis: String(anomaly[1]) },
+      ])
+    }
+  })
+
+  return {
+    markLineData,
+    markAreaData,
+  }
+}
 
 const createChartOption = (timeseries) => {
   return {
@@ -27,6 +53,8 @@ const createChartOption = (timeseries) => {
       smooth: true,
       symbolSize: 5,
       data: timeseries,
+      markLine: { data: markLineData, symbol: ['none', 'none'], lineStyle: { type: 'solid' } },
+      markArea: { data: markAreaData },
     }],
     xAxis: {
       min: timeseries.length > 0 ? timeseries[0][0] - 1 : 0,
