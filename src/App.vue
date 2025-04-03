@@ -105,6 +105,16 @@
       </el-link>
     </router-link>
 
+    <router-link to="/demo-d">
+      <el-link
+        class="text-2xl"
+        type="primary"
+        :underline="false"
+      >
+        Demo D
+      </el-link>
+    </router-link>
+
   </el-space>
   <!-- </div> -->
   <router-view></router-view>
