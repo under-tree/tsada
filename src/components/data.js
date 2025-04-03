@@ -29381,3 +29381,409 @@ export const editorData = {
     ]
   },
 }
+
+export const uData = [
+  {
+    name: 'UCR',
+    tsCurated: 228,
+    avgDim: 1,
+    avgTsLen: 67818.7,
+    avgAnomalyCount: 1,
+    avgAnomalyLen: 198.9,
+    anomalyRatio: '0.6%',
+    category: 'P&Seq'
+  },
+  {
+    name: 'NAB',
+    tsCurated: 28,
+    avgDim: 1,
+    avgTsLen: 5099.7,
+    avgAnomalyCount: 1.6,
+    avgAnomalyLen: 370.1,
+    anomalyRatio: '10.6%',
+    category: 'Seq'
+  },
+  {
+    name: 'YAHOO',
+    tsCurated: 259,
+    avgDim: 1,
+    avgTsLen: 1560.2,
+    avgAnomalyCount: 5.5,
+    avgAnomalyLen: 2.5,
+    anomalyRatio: '0.6%',
+    category: 'P&Seq'
+  },
+  {
+    name: 'IOPS',
+    tsCurated: 17,
+    avgDim: 1,
+    avgTsLen: 72792.3,
+    avgAnomalyCount: 25.6,
+    avgAnomalyLen: 48.7,
+    anomalyRatio: '1.3%',
+    category: 'Seq'
+  },
+  {
+    name: 'MGAB',
+    tsCurated: 9,
+    avgDim: 1,
+    avgTsLen: 97777.8,
+    avgAnomalyCount: 9.7,
+    avgAnomalyLen: 20.0,
+    anomalyRatio: '0.2%',
+    category: 'Seq'
+  },
+  {
+    name: 'WSD',
+    tsCurated: 111,
+    avgDim: 1,
+    avgTsLen: 17444.5,
+    avgAnomalyCount: 5.1,
+    avgAnomalyLen: 25.4,
+    anomalyRatio: '0.6%',
+    category: 'Seq'
+  },
+  {
+    name: 'SED',
+    tsCurated: 3,
+    avgDim: 1,
+    avgTsLen: 23332.3,
+    avgAnomalyCount: 14.7,
+    avgAnomalyLen: 64.0,
+    anomalyRatio: '4.1%',
+    category: 'Seq'
+  },
+  {
+    name: 'TODS',
+    tsCurated: 15,
+    avgDim: 1,
+    avgTsLen: 5000.0,
+    avgAnomalyCount: 97.3,
+    avgAnomalyLen: 18.7,
+    anomalyRatio: '6.3%',
+    category: 'P&Seq'
+  },
+  {
+    name: 'NEK',
+    tsCurated: 9,
+    avgDim: 1,
+    avgTsLen: 1073.0,
+    avgAnomalyCount: 2.9,
+    avgAnomalyLen: 51.1,
+    anomalyRatio: '8.0%',
+    category: 'P&Seq'
+  },
+  {
+    name: 'Stock',
+    tsCurated: 20,
+    avgDim: 1,
+    avgTsLen: 15000.0,
+    avgAnomalyCount: 1246.9,
+    avgAnomalyLen: 1.1,
+    anomalyRatio: '9.4%',
+    category: 'P&Seq'
+  },
+  {
+    "name": "Power",
+    "tsCurated": 1,
+    "avgDim": 1,
+    "avgTsLen": 35040.0,
+    "avgAnomalyCount": 4,
+    "avgAnomalyLen": 750,
+    "anomalyRatio": "8.5%",
+    "category": "Seq"
+  },
+  {
+    "name": "Daphnet (U)",
+    "tsCurated": 1,
+    "avgDim": 1,
+    "avgTsLen": 38774.0,
+    "avgAnomalyCount": 6,
+    "avgAnomalyLen": 384.3,
+    "anomalyRatio": "5.9%",
+    "category": "Seq"
+  },
+  {
+    "name": "CATSv2 (U)",
+    "tsCurated": 1,
+    "avgDim": 1,
+    "avgTsLen": 300000.0,
+    "avgAnomalyCount": 19.0,
+    "avgAnomalyLen": 778.9,
+    "anomalyRatio": "4.9%",
+    "category": "Seq"
+  },
+  {
+    "name": "SWaT (U)",
+    "tsCurated": 1,
+    "avgDim": 1,
+    "avgTsLen": 419919.0,
+    "avgAnomalyCount": 27.0,
+    "avgAnomalyLen": 1876.0,
+    "anomalyRatio": "12.1%",
+    "category": "Seq"
+  },
+  {
+    "name": "LTDB (U)",
+    "tsCurated": 9,
+    "avgDim": 1,
+    "avgTsLen": 99700.0,
+    "avgAnomalyCount": 127.5,
+    "avgAnomalyLen": 144.5,
+    "anomalyRatio": "18.6%",
+    "category": "Seq"
+  },
+  {
+    "name": "TAO (U)",
+    "tsCurated": 3,
+    "avgDim": 1,
+    "avgTsLen": 10000.0,
+    "avgAnomalyCount": 838.7,
+    "avgAnomalyLen": 1.1,
+    "anomalyRatio": "9.4%",
+    "category": "P&Seq"
+  },
+  {
+    "name": "Exathlon (U)",
+    "tsCurated": 32,
+    "avgDim": 1,
+    "avgTsLen": 44075.8,
+    "avgAnomalyCount": 3.1,
+    "avgAnomalyLen": 1577.3,
+    "anomalyRatio": "11.0%",
+    "category": "Seq"
+  },
+  {
+    "name": "MITDB (U)",
+    "tsCurated": 8,
+    "avgDim": 1,
+    "avgTsLen": 631250.0,
+    "avgAnomalyCount": 68.7,
+    "avgAnomalyLen": 451.9,
+    "anomalyRatio": "4.2%",
+    "category": "Seq"
+  },
+  {
+    "name": "MSL (U)",
+    "tsCurated": 9,
+    "avgDim": 1,
+    "avgTsLen": 3492.0,
+    "avgAnomalyCount": 1.3,
+    "avgAnomalyLen": 130.0,
+    "anomalyRatio": "5.8%",
+    "category": "Seq"
+  },
+  {
+    "name": "SMAP (U)",
+    "tsCurated": 19,
+    "avgDim": 1,
+    "avgTsLen": 7700.2,
+    "avgAnomalyCount": 1.2,
+    "avgAnomalyLen": 210.1,
+    "anomalyRatio": "2.8%",
+    "category": "Seq"
+  },
+  {
+    "name": "SMD (U)",
+    "tsCurated": 38,
+    "avgDim": 1,
+    "avgTsLen": 24207.7,
+    "avgAnomalyCount": 2.4,
+    "avgAnomalyLen": 173.7,
+    "anomalyRatio": "2.0%",
+    "category": "Seq"
+  },
+  {
+    "name": "SVDB (U)",
+    "tsCurated": 20,
+    "avgDim": 1,
+    "avgTsLen": 171380.0,
+    "avgAnomalyCount": 36.4,
+    "avgAnomalyLen": 292.5,
+    "anomalyRatio": "3.6%",
+    "category": "Seq"
+  },
+  {
+    "name": "OPP (U)",
+    "tsCurated": 29,
+    "avgDim": 1,
+    "avgTsLen": 16544.8,
+    "avgAnomalyCount": 1.4,
+    "avgAnomalyLen": 653.4,
+    "anomalyRatio": "6.4%",
+    "category": "Seq"
+  },
+]
+
+export const mData = [
+  {
+    "name": "GHL",
+    "tsCurated": 25,
+    "avgDim": 19,
+    "avgTsLen": 199001.0,
+    "avgAnomalyCount": 2.2,
+    "avgAnomalyLen": 1035.2,
+    "anomalyRatio": "1.1%",
+    "category": "Seq"
+  },
+  {
+    "name": "Daphnet",
+    "tsCurated": 1,
+    "avgDim": 9,
+    "avgTsLen": 38774.0,
+    "avgAnomalyCount": 6.0,
+    "avgAnomalyLen": 384.3,
+    "anomalyRatio": "5.9%",
+    "category": "Seq"
+  },
+  {
+    "name": "Exathlon",
+    "tsCurated": 27,
+    "avgDim": 21,
+    "avgTsLen": 60878.4,
+    "avgAnomalyCount": 4.3,
+    "avgAnomalyLen": 1373.3,
+    "anomalyRatio": "9.8%",
+    "category": "Seq"
+  },
+  {
+    "name": "Genesis",
+    "tsCurated": 1,
+    "avgDim": 18,
+    "avgTsLen": 16220.0,
+    "avgAnomalyCount": 3.0,
+    "avgAnomalyLen": 16.7,
+    "anomalyRatio": "0.3%",
+    "category": "Seq"
+  },
+  {
+    "name": "OPP",
+    "tsCurated": 8,
+    "avgDim": 248,
+    "avgTsLen": 17426.75,
+    "avgAnomalyCount": 1.4,
+    "avgAnomalyLen": 394.3,
+    "anomalyRatio": "4.1%",
+    "category": "Seq"
+  },
+  {
+    "name": "SMD",
+    "tsCurated": 22,
+    "avgDim": 38,
+    "avgTsLen": 25466.4,
+    "avgAnomalyCount": 8.9,
+    "avgAnomalyLen": 112.8,
+    "anomalyRatio": "3.8%",
+    "category": "Seq"
+  },
+  {
+    "name": "SWaT",
+    "tsCurated": 2,
+    "avgDim": 59,
+    "avgTsLen": 207457.5,
+    "avgAnomalyCount": 16.5,
+    "avgAnomalyLen": 1093.6,
+    "anomalyRatio": "12.7%",
+    "category": "Seq"
+  },
+  {
+    "name": "PSM",
+    "tsCurated": 1,
+    "avgDim": 25,
+    "avgTsLen": 217624.0,
+    "avgAnomalyCount": 72.0,
+    "avgAnomalyLen": 338.6,
+    "anomalyRatio": "11.2%",
+    "category": "P&Seq"
+  },
+  {
+    "name": "SMAP",
+    "tsCurated": 27,
+    "avgDim": 25,
+    "avgTsLen": 7855.9,
+    "avgAnomalyCount": 1.3,
+    "avgAnomalyLen": 196.3,
+    "anomalyRatio": "2.9%",
+    "category": "Seq"
+  },
+  {
+    "name": "MSL",
+    "tsCurated": 16,
+    "avgDim": 55,
+    "avgTsLen": 3119.4,
+    "avgAnomalyCount": 1.3,
+    "avgAnomalyLen": 111.7,
+    "anomalyRatio": "5.1%",
+    "category": "Seq"
+  },
+  {
+    "name": "CreditCard",
+    "tsCurated": 1,
+    "avgDim": 29,
+    "avgTsLen": 284807.0,
+    "avgAnomalyCount": 465.0,
+    "avgAnomalyLen": 1.1,
+    "anomalyRatio": "0.2%",
+    "category": "P&Seq"
+  },
+  {
+    "name": "GECCO",
+    "tsCurated": 1,
+    "avgDim": 9,
+    "avgTsLen": 138521.0,
+    "avgAnomalyCount": 51.0,
+    "avgAnomalyLen": 33.8,
+    "anomalyRatio": "1.2%",
+    "category": "Seq"
+  },
+  {
+    "name": "MITDB",
+    "tsCurated": 13,
+    "avgDim": 2,
+    "avgTsLen": 336153.8,
+    "avgAnomalyCount": 15.2,
+    "avgAnomalyLen": 1846.8,
+    "anomalyRatio": "2.7%",
+    "category": "Seq"
+  },
+  {
+    "name": "SVDB",
+    "tsCurated": 31,
+    "avgDim": 2,
+    "avgTsLen": 207122.6,
+    "avgAnomalyCount": 68.3,
+    "avgAnomalyLen": 268.2,
+    "anomalyRatio": "4.8%",
+    "category": "Seq"
+  },
+  {
+    "name": "LTDB",
+    "tsCurated": 5,
+    "avgDim": 2,
+    "avgTsLen": 100000.0,
+    "avgAnomalyCount": 105.0,
+    "avgAnomalyLen": 134.4,
+    "anomalyRatio": "15.5%",
+    "category": "Seq"
+  },
+  {
+    "name": "CATSv2",
+    "tsCurated": 6,
+    "avgDim": 17,
+    "avgTsLen": 240000.0,
+    "avgAnomalyCount": 11.5,
+    "avgAnomalyLen": 811.6,
+    "anomalyRatio": "3.7%",
+    "category": "Seq"
+  },
+  {
+    "name": "TAO",
+    "tsCurated": 13,
+    "avgDim": 3,
+    "avgTsLen": 10000.0,
+    "avgAnomalyCount": 788.2,
+    "avgAnomalyLen": 1.1,
+    "anomalyRatio": "8.7%",
+    "category": "P&Seq"
+  },
+]

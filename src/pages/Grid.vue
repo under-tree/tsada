@@ -3,8 +3,9 @@ import SingleTimeSeriseChart from '../components/SingleTimeSeriseChart.vue'
 import MultipleTimeSeriseChart from '../components/MultipleTimeSeriseChart.vue'
 import Radar from '../components/Radar.vue'
 import Gantt from '../components/Gantt.vue'
+import DatasetTable from '../components/DatasetTable.vue'
 import { ref } from 'vue'
-import { data } from '../components/data'
+import { data, uData } from '../components/data'
 
 const multipleData = [
   data,
@@ -225,6 +226,22 @@ const options2 = Object.keys(datasets).map(key => ({ value: key, label: key }))
         <el-card class="h-37.5">
         </el-card>
       </el-col>
+    </el-row>
+
+    <el-row :gutter="16">
+
+      <el-col :span="16">
+        <el-card class="h-80">
+          <el-scrollbar height="20rem">
+            <DatasetTable :data="uData" />
+          </el-scrollbar>
+        </el-card>
+      </el-col>
+
+      <el-col :span="8">
+        <el-card class="h-80"></el-card>
+      </el-col>
+
     </el-row>
 
   </div>
