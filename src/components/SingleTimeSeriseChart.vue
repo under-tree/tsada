@@ -10,6 +10,7 @@ const props = defineProps({
   },
   anomalies: {
     type: Array,
+    default: null,
   },
 })
 
@@ -23,16 +24,18 @@ function convertAnomalies(anomalies) {
   let markLineData = []
   let markAreaData = []
 
-  anomalies.forEach((anomaly) => {
-    if (anomaly.length === 1) {
-      markLineData.push({ xAxis: String(anomaly[0]) })
-    } else if (anomaly.length === 2) {
-      markAreaData.push([
-        { xAxis: String(anomaly[0]) },
-        { xAxis: String(anomaly[1]) },
-      ])
-    }
-  })
+  if (anomalies && Array.isArray(anomalies)) {
+    anomalies.forEach((anomaly) => {
+      if (anomaly.length === 1) {
+        markLineData.push({ xAxis: String(anomaly[0]) })
+      } else if (anomaly.length === 2) {
+        markAreaData.push([
+          { xAxis: String(anomaly[0]) },
+          { xAxis: String(anomaly[1]) },
+        ])
+      }
+    })
+  }
 
   return {
     markLineData,
