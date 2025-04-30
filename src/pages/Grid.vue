@@ -27,16 +27,32 @@ const datasets = {
   NAB: '',
   YAHOO: '',
 }
+const datasets2 = {
+  A: '',
+  B: '',
+  C: '',
+}
 const value1 = ref('')
 const value2 = ref('')
+const value3 = ref('')
+const value4 = ref('')
 const options1 = Object.keys(models).map(key => ({ value: key, label: key }))
 const options2 = Object.keys(datasets).map(key => ({ value: key, label: key }))
+const options3 = Object.keys(datasets).map(key => ({ value: key, label: key }))
+const options4 = Object.keys(datasets2).map(key => ({ value: key, label: key }))
+
+const dynamicTags = ref(['UCR UCR UCR UCRUCRUCR UCR', 'NAB', 'YAHOO'])
+
+const handleClose = (tag) => {
+  dynamicTags.value.splice(dynamicTags.value.indexOf(tag), 1)
+}
 </script>
 
 <template>
   <div class="w-250 m-0 m-auto">
 
     <el-row :gutter="16">
+
       <el-col :span="8">
         <el-card class="h-37.5">
 
@@ -72,15 +88,51 @@ const options2 = Object.keys(datasets).map(key => ({ value: key, label: key }))
 
         </el-card>
       </el-col>
+
       <el-col :span="8">
-        <el-card class="h-37.5"></el-card>
+        <el-card class="h-37.5">
+
+          <el-select
+            v-model="value3"
+            placeholder="内置数据集"
+            size="large"
+            style="width: 240px"
+          >
+            <el-option
+              v-for="item in options3"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            />
+          </el-select>
+
+          <div class="h-4"></div>
+
+          <el-select
+            v-model="value4"
+            placeholder="自定义数据"
+            size="large"
+            style="width: 240px"
+          >
+            <el-option
+              v-for="item in options4"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            />
+          </el-select>
+
+        </el-card>
       </el-col>
+
       <el-col :span="4">
         <el-card class="h-37.5"></el-card>
       </el-col>
+
       <el-col :span="4">
         <el-card class="h-37.5"></el-card>
       </el-col>
+
     </el-row>
 
     <el-row :gutter="16">
@@ -94,11 +146,35 @@ const options2 = Object.keys(datasets).map(key => ({ value: key, label: key }))
       </el-col>
 
       <el-col :span="8">
+
         <el-row :gutter="16">
           <el-col :span="24">
-            <el-card class="h-37.5"></el-card>
+            <el-card class="h-37.5 ">
+
+              <div class="h-20 flex flex-wrap gap-x-2">
+                <el-tag
+                  v-for="tag in dynamicTags"
+                  :key="tag"
+                  closable
+                  @close="handleClose(tag)"
+                >
+                  {{ tag }}
+                </el-tag>
+              </div>
+
+              <el-button
+                type="primary"
+                plain
+              >导入数据</el-button>
+              <el-button
+                type="primary"
+                plain
+              >保存数据</el-button>
+
+            </el-card>
           </el-col>
         </el-row>
+
         <el-row
           :gutter="16"
           class="!mb-0"
@@ -110,6 +186,7 @@ const options2 = Object.keys(datasets).map(key => ({ value: key, label: key }))
             <el-card class="h-37.5"></el-card>
           </el-col>
         </el-row>
+
       </el-col>
 
     </el-row>
@@ -270,6 +347,26 @@ const options2 = Object.keys(datasets).map(key => ({ value: key, label: key }))
         <el-card class="h-37.5 flex items-center justify-center">
           <div class="i-ep-circle-plus text-7xl" />
         </el-card>
+      </el-col>
+
+    </el-row>
+
+    <el-row :gutter="16">
+
+      <el-col :span="8">
+        <el-card class="h-37.5"></el-card>
+      </el-col>
+
+      <el-col :span="8">
+        <el-card class="h-37.5"></el-card>
+      </el-col>
+
+      <el-col :span="4">
+        <el-card class="h-37.5"></el-card>
+      </el-col>
+
+      <el-col :span="4">
+        <el-card class="h-37.5"></el-card>
       </el-col>
 
     </el-row>
