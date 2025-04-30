@@ -40,10 +40,10 @@ const props = defineProps({
       prop="anomalyRatio"
       label="异常占比"
     />
-    <el-table-column
+    <!-- <el-table-column
       prop="category"
       label="异常类型"
-    />
+    /> -->
   </el-table>
 </template>
 

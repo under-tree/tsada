@@ -244,6 +244,36 @@ const options2 = Object.keys(datasets).map(key => ({ value: key, label: key }))
 
     </el-row>
 
+    <el-row :gutter="16">
+
+      <el-col :span="16">
+        <el-card class="h-80"></el-card>
+      </el-col>
+
+      <el-col :span="8">
+        <el-card class="h-80"></el-card>
+      </el-col>
+
+    </el-row>
+
+    <el-row :gutter="16">
+
+      <el-col :span="16">
+        <el-card class="h-37.5"></el-card>
+      </el-col>
+
+      <el-col :span="4">
+        <el-card class="h-37.5"></el-card>
+      </el-col>
+
+      <el-col :span="4">
+        <el-card class="h-37.5 flex items-center justify-center">
+          <div class="i-ep-circle-plus text-7xl" />
+        </el-card>
+      </el-col>
+
+    </el-row>
+
   </div>
 </template>
 
