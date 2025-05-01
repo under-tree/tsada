@@ -1,12 +1,27 @@
 <script setup>
 import editIconRaw from '../assets/EpEdit.svg?raw'
-import { onMounted, onUnmounted, ref, nextTick } from 'vue'
+import { onMounted, onUnmounted, ref, watch, nextTick } from 'vue'
 import * as echarts from 'echarts'
-import { editorData } from './data'
+// import { editorData } from './data'
 
 const props = defineProps({
   dataDimension: Number,
+  editorData: Object,
 })
+
+const result = ref([])
+const emit = defineEmits(['updateResult'])
+
+watch(result, (newValue) => {
+  emit('updateResult', newValue)
+}, { deep: true })
+
+watch(() => props.editorData, (newValue) => {
+  _rawData = newValue
+  if (myChart) {
+    myChart.setOption(createChartOption())
+  }
+}, { deep: true })
 
 const svgBase64 = btoa(editIconRaw)
 const svgDataUrl = `image://data:image/svg+xml;base64,${svgBase64}`
@@ -195,7 +210,7 @@ const disposeChart = () => {
 
 onMounted(() => {
   nextTick(() => {
-    _rawData = editorData
+    _rawData = props.editorData
     if (props.dataDimension < n_raws) {
       for (let i = 0; i < n_raws; i++) {
         _rawData.parkingApron.data.push([i + 1])
@@ -414,7 +429,8 @@ function initDrag() {
             data: _rawData.flight.data
           }
         })
-      console.log(_rawData.flight.data)
+      // console.log(_rawData.flight.data)
+      result.value = _rawData.flight.data.map(item => [...item])
     }
     dragRelease()
   })
