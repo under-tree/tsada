@@ -13,7 +13,7 @@ import { ref } from 'vue'
         class="mb-4"
       >
         <el-card class="h-80">
-          <div class="h-80">
+          <div class="h-70">
           </div>
         </el-card>
       </el-col>
@@ -46,13 +46,28 @@ import { ref } from 'vue'
 
     </el-row>
 
+    <el-row :gutter="16">
+
+      <el-col
+        :span="16"
+        :xs="24"
+        class="mb-4"
+      >
+        <el-card class="h-80">
+          <div class="h-70">
+          </div>
+        </el-card>
+      </el-col>
+
+    </el-row>
+
   </div>
 </template>
 
 <style scoped>
-.el-row {
+/* .el-row {
   margin-bottom: 1rem;
-}
+} */
 
 .el-col {
   border-radius: 1rem;
