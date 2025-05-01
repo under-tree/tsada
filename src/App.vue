@@ -81,7 +81,7 @@
         type="primary"
         :underline="false"
       >
-        Demo A
+        A
       </el-link>
     </router-link>
 
@@ -91,7 +91,7 @@
         type="primary"
         :underline="false"
       >
-        Demo B
+        B
       </el-link>
     </router-link>
 
@@ -101,7 +101,7 @@
         type="primary"
         :underline="false"
       >
-        Demo C
+        C
       </el-link>
     </router-link>
 
@@ -111,7 +111,27 @@
         type="primary"
         :underline="false"
       >
-        Demo D
+        D
+      </el-link>
+    </router-link>
+
+    <router-link to="/demo-e">
+      <el-link
+        class="text-2xl"
+        type="primary"
+        :underline="false"
+      >
+        E
+      </el-link>
+    </router-link>
+
+    <router-link to="/demo-f">
+      <el-link
+        class="text-2xl"
+        type="primary"
+        :underline="false"
+      >
+        F
       </el-link>
     </router-link>
 

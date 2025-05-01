@@ -10,6 +10,8 @@ import DemoA from './pages/DemoA.vue'
 import DemoB from './pages/DemoB.vue'
 import DemoC from './pages/DemoC.vue'
 import DemoD from './pages/DemoD.vue'
+import DemoE from './pages/DemoE.vue'
+import DemoF from './pages/DemoF.vue'
 
 const routes = [
   { 'path': '/', 'component': Home },
@@ -23,6 +25,8 @@ const routes = [
   { 'path': '/demo-b', 'component': DemoB },
   { 'path': '/demo-c', 'component': DemoC },
   { 'path': '/demo-d', 'component': DemoD },
+  { 'path': '/demo-e', 'component': DemoE },
+  { 'path': '/demo-f', 'component': DemoF },
 ]
 
 const router = createRouter({
