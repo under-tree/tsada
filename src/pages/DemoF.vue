@@ -2,16 +2,18 @@
 import DatasetTable from '../components/DatasetTable.vue'
 import Single from '../components/SingleTimeSeriseChart.vue'
 import Multiple from '../components/MultipleTimeSeriseChart.vue'
-import { ref, watch } from 'vue'
+import { ref, watch, computed } from 'vue'
+import axios from 'axios'
 import { data, uData, mData } from '../components/data'
 
-const multipleData = [
+const utsData = ref(data)
+const mtsData = ref([
   data,
   data.map(point => [point[0], point[1] * 2]),
   data.map(point => [point[0], point[1] / 2]),
   data.map(point => [point[0], point[1] + 0.5]),
   data.map(point => [point[0], point[1] - 0.5])
-]
+])
 
 function convertArray(array) {
   return array.map((subArray, index) => [index, subArray[0]])
@@ -31,14 +33,22 @@ function convertArray2(array) {
   return result
 }
 
-// todo
-const filenames = ['A.csv', 'B.csv', 'C.csv', 'D.csv', 'E.csv']
-
 const datasetValue = ref('')
 const fileValue = ref('')
 
+const filenames = ref([])
+const files = computed(() => filenames.value.map(value => ({ value, label: value })))
+
 let datasets = ref(uData.map(value => ({ value: value.name, label: value.name })))
-const files = filenames.map(value => ({ value, label: value }))
+
+watch(datasetValue, async (newVal) => {
+  try {
+    const response = await axios.get(`/api/datasets/${newVal}`)
+    filenames.value = response.data
+  } catch (error) {
+    console.error(error)
+  }
+})
 
 const radio = ref('Single')
 watch(radio, (newVal) => {
@@ -57,7 +67,19 @@ const handleRowClicked = (row) => {
   datasetValue.value = row.name
 }
 
-const handleImportData = () => { }
+const handleImportData = async () => {
+  try {
+    const response = await axios.get(`/api/timeseries/${fileValue.value}`)
+    if (radio.value === 'Single') {
+      utsData.value = convertArray(response.data)
+    } else {
+      mtsData.value = convertArray2(response.data)
+    }
+  }
+  catch (error) {
+    console.error(error)
+  }
+}
 
 </script>
 
@@ -175,11 +197,11 @@ const handleImportData = () => { }
           <div class="h-70">
             <Single
               v-if="radio == 'Single'"
-              :timeseries="data"
+              :timeseries="utsData"
             />
             <Multiple
               v-else-if="radio == 'Multiple'"
-              :timeseries="multipleData"
+              :timeseries="mtsData"
             />
           </div>
         </el-card>
