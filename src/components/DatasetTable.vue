@@ -5,12 +5,19 @@ const props = defineProps({
     required: true
   },
 })
+
+const emits = defineEmits(['row-clicked'])
+
+const handleRowClick = (row) => {
+  emits('row-clicked', row)
+}
 </script>
 
 <template>
   <el-table
     :data="data"
     stripe
+    @row-click="handleRowClick"
   >
     <el-table-column
       prop="name"
