@@ -45,7 +45,7 @@
       </el-link>
     </router-link> -->
 
-    <router-link to="/datasets">
+    <!-- <router-link to="/datasets">
       <el-link
         class="text-2xl"
         type="primary"
@@ -53,9 +53,9 @@
       >
         Datasets
       </el-link>
-    </router-link>
+    </router-link> -->
 
-    <router-link to="/editor">
+    <!-- <router-link to="/editor">
       <el-link
         class="text-2xl"
         type="primary"
@@ -63,9 +63,9 @@
       >
         Editor
       </el-link>
-    </router-link>
+    </router-link> -->
 
-    <router-link to="/demo">
+    <!-- <router-link to="/demo">
       <el-link
         class="text-2xl"
         type="primary"
@@ -73,7 +73,7 @@
       >
         Demo
       </el-link>
-    </router-link>
+    </router-link> -->
 
     <router-link to="/demo-a">
       <el-link
