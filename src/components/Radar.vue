@@ -1,8 +1,15 @@
 <script setup>
+import { computed } from 'vue'
 import RadarChart from './RadarChart.vue'
 
+const props = defineProps({
+  data: {
+    type: Object,
+  }
+})
+
 const title = '性能指标'
-const legendData = ['ARIMA', 'TadGAN']
+const legendData = computed(() => Object.keys(props.data))
 const radarIndicator = [
   { name: 'PA-F1', max: 1 },
   { name: 'Event-based-F1', max: 1 },
@@ -11,16 +18,12 @@ const radarIndicator = [
   { name: 'AUC-PR', max: 1 },
   { name: 'AUC-ROC', max: 1 }
 ]
-const seriesData = [
-  {
-    value: [0.42, 0.30, 0.40, 0.35, 0.50, 0.18],
-    name: 'ARIMA'
-  },
-  {
-    value: [0.50, 0.64, 0.78, 0.66, 0.82, 0.51],
-    name: 'TadGAN'
+const seriesData = computed(() => Object.values(props.data).map((value, index) => {
+  return {
+    value: value,
+    name: legendData[index]
   }
-]
+}))
 </script>
 
 <template>

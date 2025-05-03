@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, onUnmounted, ref, nextTick } from 'vue'
+import { onMounted, onUnmounted, ref, watch, nextTick } from 'vue'
 import * as echarts from 'echarts'
 
 const props = defineProps({
@@ -53,6 +53,12 @@ const disposeChart = () => {
     myChart = null
   }
 }
+
+watch(() => props.seriesData, (newVal) => {
+  if (myChart) {
+    myChart.setOption(createChartOption(newVal))
+  }
+}, { deep: true })
 
 onMounted(() => {
   nextTick(() => {
