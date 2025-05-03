@@ -21,7 +21,7 @@ const radarIndicator = [
 const seriesData = computed(() => Object.values(props.data).map((value, index) => {
   return {
     value: value,
-    name: legendData[index]
+    name: legendData.value[index]
   }
 }))
 </script>
