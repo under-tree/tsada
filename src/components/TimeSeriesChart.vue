@@ -165,23 +165,23 @@ const updateChart = () => {
   myChart.setOption({
     grid: {
       left: '5%',
-      right: '7.5%',
+      right: '5%',
       top: '5%',
       bottom: '15%'
     },
     series: [{
       type: 'line',
       smooth: true,
-      symbolSize: 10,
+      symbolSize: 5,
       data: data,
-      markLine: { data: markLineData },
+      markLine: { data: markLineData, symbol: ['none', 'none'], lineStyle: { type: 'solid' } },
       markArea: { data: markAreaData },
     }],
     xAxis: { min: data[0][0] - 1, type: 'value', axisLine: { onZero: false } },
     yAxis: { type: 'value', axisLine: { onZero: false } },
     dataZoom: [
       { type: 'slider', xAxisIndex: 0, filterMode: 'none', startValue: 0, endValue: 100 },
-      { type: 'slider', yAxisIndex: 0, filterMode: 'none' },
+      { type: 'slider', yAxisIndex: 0, filterMode: 'none', width: 10 },
       { type: 'inside', xAxisIndex: 0, filterMode: 'none' },
     ],
     tooltip: {},

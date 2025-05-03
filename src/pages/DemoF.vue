@@ -84,131 +84,133 @@ const handleImportData = async () => {
 </script>
 
 <template>
-  <div class="max-w-250 m-0 m-auto">
+  <div class="mx-10">
+    <div class="max-w-250 m-0 m-auto">
 
-    <el-row :gutter="16">
+      <el-row :gutter="16">
 
-      <el-col
-        :span="16"
-        :xs="24"
-        class="mb-4"
-      >
-        <el-card class="h-80">
-          <div class="h-70">
-            <el-scrollbar height="17.5rem">
-              <DatasetTable
-                :data="radio === 'Single' ? uData : mData"
-                @row-clicked="handleRowClicked"
+        <el-col
+          :span="16"
+          :xs="24"
+          class="mb-4"
+        >
+          <el-card class="h-80">
+            <div class="h-70">
+              <el-scrollbar height="17.5rem">
+                <DatasetTable
+                  :data="radio === 'Single' ? uData : mData"
+                  @row-clicked="handleRowClicked"
+                />
+              </el-scrollbar>
+            </div>
+          </el-card>
+        </el-col>
+
+        <el-col
+          :span="8"
+          :xs="24"
+        >
+
+          <el-row :gutter="16">
+            <el-col
+              :span="24"
+              :xs="12"
+              class="mb-4"
+            >
+              <el-card class="h-37.5">
+                <div>
+                  <el-radio-group v-model="radio">
+                    <el-radio-button
+                      label="单变量"
+                      value="Single"
+                    />
+                    <el-radio-button
+                      label="多变量"
+                      value="Multiple"
+                    />
+                  </el-radio-group>
+                </div>
+
+                <div class="h-6"></div>
+
+                <el-select
+                  v-model="datasetValue"
+                  placeholder="数据集"
+                  size="large"
+                  style="width: 240px"
+                  @change="handleSelectChange"
+                >
+                  <el-option
+                    v-for="item in datasets"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value"
+                  />
+                </el-select>
+              </el-card>
+            </el-col>
+
+            <el-col
+              :span="24"
+              :xs="12"
+            >
+              <el-card class="h-37.5 ">
+                <el-select
+                  v-model="fileValue"
+                  placeholder="文件列表"
+                  size="large"
+                  style="width: 240px"
+                  @change="handleSelectChange"
+                >
+                  <el-option
+                    v-for="item in files"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value"
+                  />
+                </el-select>
+
+                <div class="h-6"></div>
+
+                <el-button
+                  type="primary"
+                  plain
+                  @click="handleImportData"
+                >
+                  预览数据
+                </el-button>
+              </el-card>
+            </el-col>
+          </el-row>
+
+        </el-col>
+
+      </el-row>
+
+      <el-row :gutter="16">
+
+        <el-col
+          :span="16"
+          :xs="24"
+          class="mb-4"
+        >
+          <el-card class="h-80">
+            <div class="h-70">
+              <Single
+                v-if="radio == 'Single'"
+                :timeseries="utsData"
               />
-            </el-scrollbar>
-          </div>
-        </el-card>
-      </el-col>
+              <Multiple
+                v-else-if="radio == 'Multiple'"
+                :timeseries="mtsData"
+              />
+            </div>
+          </el-card>
+        </el-col>
 
-      <el-col
-        :span="8"
-        :xs="24"
-      >
+      </el-row>
 
-        <el-row :gutter="16">
-          <el-col
-            :span="24"
-            :xs="12"
-            class="mb-4"
-          >
-            <el-card class="h-37.5">
-              <div>
-                <el-radio-group v-model="radio">
-                  <el-radio-button
-                    label="单变量"
-                    value="Single"
-                  />
-                  <el-radio-button
-                    label="多变量"
-                    value="Multiple"
-                  />
-                </el-radio-group>
-              </div>
-
-              <div class="h-6"></div>
-
-              <el-select
-                v-model="datasetValue"
-                placeholder="数据集"
-                size="large"
-                style="width: 240px"
-                @change="handleSelectChange"
-              >
-                <el-option
-                  v-for="item in datasets"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value"
-                />
-              </el-select>
-            </el-card>
-          </el-col>
-
-          <el-col
-            :span="24"
-            :xs="12"
-          >
-            <el-card class="h-37.5 ">
-              <el-select
-                v-model="fileValue"
-                placeholder="文件列表"
-                size="large"
-                style="width: 240px"
-                @change="handleSelectChange"
-              >
-                <el-option
-                  v-for="item in files"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value"
-                />
-              </el-select>
-
-              <div class="h-6"></div>
-
-              <el-button
-                type="primary"
-                plain
-                @click="handleImportData"
-              >
-                预览数据
-              </el-button>
-            </el-card>
-          </el-col>
-        </el-row>
-
-      </el-col>
-
-    </el-row>
-
-    <el-row :gutter="16">
-
-      <el-col
-        :span="16"
-        :xs="24"
-        class="mb-4"
-      >
-        <el-card class="h-80">
-          <div class="h-70">
-            <Single
-              v-if="radio == 'Single'"
-              :timeseries="utsData"
-            />
-            <Multiple
-              v-else-if="radio == 'Multiple'"
-              :timeseries="mtsData"
-            />
-          </div>
-        </el-card>
-      </el-col>
-
-    </el-row>
-
+    </div>
   </div>
 </template>
 

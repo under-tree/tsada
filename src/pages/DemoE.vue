@@ -131,8 +131,8 @@ const handleSaveData = () => {
     <el-row :gutter="16">
 
       <el-col :span="16">
-        <el-card class="h-80">
-          <div class="h-80">
+        <el-card class="h-120">
+          <div class="h-100">
             <Gantt
               :dataDimension="4"
               :editorData="editorData"
