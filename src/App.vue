@@ -5,7 +5,7 @@
   <!-- <div class="flex items-center"> -->
   <el-space>
 
-    <router-link to="/">
+    <router-link to="/tsada/">
       <el-link
         class="text-2xl"
         type="primary"
@@ -25,7 +25,7 @@
       </el-link>
     </router-link> -->
 
-    <router-link to="/grid">
+    <router-link to="/tsada/grid">
       <el-link
         class="text-2xl"
         type="primary"
@@ -75,7 +75,7 @@
       </el-link>
     </router-link> -->
 
-    <router-link to="/demo-a">
+    <router-link to="/tsada/demo-a">
       <el-link
         class="text-2xl"
         type="primary"
@@ -85,7 +85,7 @@
       </el-link>
     </router-link>
 
-    <router-link to="/demo-b">
+    <router-link to="/tsada/demo-b">
       <el-link
         class="text-2xl"
         type="primary"
@@ -95,7 +95,7 @@
       </el-link>
     </router-link>
 
-    <router-link to="/demo-c">
+    <router-link to="/tsada/demo-c">
       <el-link
         class="text-2xl"
         type="primary"
@@ -105,7 +105,7 @@
       </el-link>
     </router-link>
 
-    <router-link to="/demo-d">
+    <router-link to="/tsada/demo-d">
       <el-link
         class="text-2xl"
         type="primary"
@@ -115,7 +115,7 @@
       </el-link>
     </router-link>
 
-    <router-link to="/demo-e">
+    <router-link to="/tsada/demo-e">
       <el-link
         class="text-2xl"
         type="primary"
@@ -125,7 +125,7 @@
       </el-link>
     </router-link>
 
-    <router-link to="/demo-f">
+    <router-link to="/tsada/demo-f">
       <el-link
         class="text-2xl"
         type="primary"

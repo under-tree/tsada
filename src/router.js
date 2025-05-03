@@ -13,25 +13,27 @@ import DemoD from './pages/DemoD.vue'
 import DemoE from './pages/DemoE.vue'
 import DemoF from './pages/DemoF.vue'
 
+const BASE = '/tsada'
+
 const routes = [
-  { 'path': '/', 'component': Home },
-  { 'path': '/radar', 'component': Radar },
-  { 'path': '/grid', 'component': Grid },
-  { 'path': '/pie', 'component': Pie },
-  { 'path': '/datasets', 'component': Datasets },
-  { 'path': '/editor', 'component': DataEditor },
-  { 'path': '/demo', 'component': Demo },
-  { 'path': '/demo-a', 'component': DemoA },
-  { 'path': '/demo-b', 'component': DemoB },
-  { 'path': '/demo-c', 'component': DemoC },
-  { 'path': '/demo-d', 'component': DemoD },
-  { 'path': '/demo-e', 'component': DemoE },
-  { 'path': '/demo-f', 'component': DemoF },
+  { 'path': BASE + '/', 'component': Home },
+  { 'path': BASE + '/radar', 'component': Radar },
+  { 'path': BASE + '/grid', 'component': Grid },
+  { 'path': BASE + '/pie', 'component': Pie },
+  { 'path': BASE + '/datasets', 'component': Datasets },
+  { 'path': BASE + '/editor', 'component': DataEditor },
+  { 'path': BASE + '/demo', 'component': Demo },
+  { 'path': BASE + '/demo-a', 'component': DemoA },
+  { 'path': BASE + '/demo-b', 'component': DemoB },
+  { 'path': BASE + '/demo-c', 'component': DemoC },
+  { 'path': BASE + '/demo-d', 'component': DemoD },
+  { 'path': BASE + '/demo-e', 'component': DemoE },
+  { 'path': BASE + '/demo-f', 'component': DemoF },
 ]
 
 const router = createRouter({
   routes,
-  history: createWebHistory()
+  history: createWebHistory('/tsada/')
 })
 
 export default router
