@@ -2,8 +2,8 @@
 </script>
 
 <template>
-  <!-- <div class="flex items-center"> -->
-  <el-space>
+
+  <!-- <el-space>
 
     <router-link to="/tsada/">
       <el-link
@@ -15,16 +15,6 @@
       </el-link>
     </router-link>
 
-    <!-- <router-link to="/radar">
-      <el-link
-        class="text-2xl"
-        type="primary"
-        :underline="false"
-      >
-        Radar
-      </el-link>
-    </router-link> -->
-
     <router-link to="/tsada/grid">
       <el-link
         class="text-2xl"
@@ -34,46 +24,6 @@
         Grid
       </el-link>
     </router-link>
-
-    <!-- <router-link to="/pie">
-      <el-link
-        class="text-2xl"
-        type="primary"
-        :underline="false"
-      >
-        Pie
-      </el-link>
-    </router-link> -->
-
-    <!-- <router-link to="/datasets">
-      <el-link
-        class="text-2xl"
-        type="primary"
-        :underline="false"
-      >
-        Datasets
-      </el-link>
-    </router-link> -->
-
-    <!-- <router-link to="/editor">
-      <el-link
-        class="text-2xl"
-        type="primary"
-        :underline="false"
-      >
-        Editor
-      </el-link>
-    </router-link> -->
-
-    <!-- <router-link to="/demo">
-      <el-link
-        class="text-2xl"
-        type="primary"
-        :underline="false"
-      >
-        Demo
-      </el-link>
-    </router-link> -->
 
     <router-link to="/tsada/demo-a">
       <el-link
@@ -135,9 +85,22 @@
       </el-link>
     </router-link>
 
-  </el-space>
-  <!-- </div> -->
+  </el-space> -->
+
+  <el-header class="flex items-center">
+    <el-space>
+      <router-link to="/tsada/"><el-link type="primary" :underline="false">首页</el-link></router-link>
+      <router-link to="/tsada/demo-f"><el-link type="primary" :underline="false">预览数据</el-link></router-link>
+      <router-link to="/tsada/demo-e"><el-link type="primary" :underline="false">组装数据</el-link></router-link>
+      <router-link to="/tsada/demo-d"><el-link type="primary" :underline="false">检测异常</el-link></router-link>
+      <router-link to="/tsada/demo-c"><el-link type="primary" :underline="false">对比分析</el-link></router-link>
+    </el-space>
+  </el-header>
+
+  <el-divider class="mt-0" />
+
   <router-view></router-view>
+
 </template>
 
 <style scoped></style>
