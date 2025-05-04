@@ -126,105 +126,107 @@ const handleSaveData = () => {
 </script>
 
 <template>
-  <div class="w-250 m-0 m-auto">
+  <div class="mx-10">
+    <div class="max-w-250 m-0 m-auto">
 
-    <el-row :gutter="16">
+      <el-row :gutter="16">
 
-      <el-col :span="16">
-        <el-card class="h-120">
-          <div class="h-100">
-            <Gantt
-              :dataDimension="4"
-              :editorData="editorData"
-              @updateResult="handleResultUpdate"
-            />
-          </div>
-        </el-card>
-      </el-col>
+        <el-col :span="16">
+          <el-card class="h-120">
+            <div class="h-100">
+              <Gantt
+                :dataDimension="4"
+                :editorData="editorData"
+                @updateResult="handleResultUpdate"
+              />
+            </div>
+          </el-card>
+        </el-col>
 
-      <el-col :span="8">
+        <el-col :span="8">
 
-        <el-row :gutter="16">
-          <el-col :span="24">
-            <el-card class="h-37.5">
+          <el-row :gutter="16">
+            <el-col :span="24">
+              <el-card class="h-37.5">
 
-              <el-select
-                v-model="value3"
-                placeholder="内置数据集"
-                size="large"
-                style="width: 240px"
-                @change="handleSelectChange"
-              >
-                <el-option
-                  v-for="item in options3"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value"
-                />
-              </el-select>
-
-              <div class="h-4"></div>
-
-              <el-select
-                v-model="value4"
-                placeholder="自定义数据"
-                size="large"
-                style="width: 240px"
-                @change="handleSelectChange"
-              >
-                <el-option
-                  v-for="item in options4"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value"
-                />
-              </el-select>
-
-            </el-card>
-          </el-col>
-        </el-row>
-
-        <el-row
-          :gutter="16"
-          class="!mb-0"
-        >
-          <el-col :span="24">
-            <el-card class="h-37.5 ">
-
-              <div class="h-20 flex flex-wrap gap-x-2">
-                <el-tag
-                  v-for="tag in dynamicTags"
-                  :key="tag"
-                  closable
-                  @close="handleClose(tag)"
+                <el-select
+                  v-model="value3"
+                  placeholder="内置数据集"
+                  size="large"
+                  style="width: 240px"
+                  @change="handleSelectChange"
                 >
-                  {{ tag }}
-                </el-tag>
-              </div>
+                  <el-option
+                    v-for="item in options3"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value"
+                  />
+                </el-select>
 
-              <el-button
-                type="primary"
-                plain
-                @click="handleImportData"
-              >
-                导入数据
-              </el-button>
-              <el-button
-                type="primary"
-                plain
-                @click="handleSaveData"
-              >
-                保存数据
-              </el-button>
+                <div class="h-4"></div>
 
-            </el-card>
-          </el-col>
-        </el-row>
+                <el-select
+                  v-model="value4"
+                  placeholder="自定义数据"
+                  size="large"
+                  style="width: 240px"
+                  @change="handleSelectChange"
+                >
+                  <el-option
+                    v-for="item in options4"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value"
+                  />
+                </el-select>
 
-      </el-col>
+              </el-card>
+            </el-col>
+          </el-row>
 
-    </el-row>
+          <el-row
+            :gutter="16"
+            class="!mb-0"
+          >
+            <el-col :span="24">
+              <el-card class="h-37.5 ">
 
+                <div class="h-20 flex flex-wrap gap-x-2">
+                  <el-tag
+                    v-for="tag in dynamicTags"
+                    :key="tag"
+                    closable
+                    @close="handleClose(tag)"
+                  >
+                    {{ tag }}
+                  </el-tag>
+                </div>
+
+                <el-button
+                  type="primary"
+                  plain
+                  @click="handleImportData"
+                >
+                  导入数据
+                </el-button>
+                <el-button
+                  type="primary"
+                  plain
+                  @click="handleSaveData"
+                >
+                  保存数据
+                </el-button>
+
+              </el-card>
+            </el-col>
+          </el-row>
+
+        </el-col>
+
+      </el-row>
+
+    </div>
   </div>
 </template>
 

@@ -31,99 +31,101 @@ const handleModelSelectChange = (value) => {
 </script>
 
 <template>
-  <div class="max-w-250 m-0 m-auto">
+  <div class="mx-10">
+    <div class="max-w-250 m-0 m-auto">
 
-    <el-row :gutter="16">
+      <el-row :gutter="16">
 
-      <el-col :span="16">
-        <el-card class="h-37.5">
-          <el-steps
-            class="mt-8"
-            :active="step"
-            align-center
+        <el-col :span="16">
+          <el-card class="h-37.5">
+            <el-steps
+              class="mt-8"
+              :active="step"
+              align-center
+            >
+              <el-step title="导入数据"><template #icon>
+                  <div class="i-ep-download text-2xl" />
+                </template> </el-step>
+              <el-step title="选择模型"><template #icon>
+                  <div class="i-ep-set-up text-2xl" />
+                </template> </el-step>
+              <el-step title="查看异常"><template #icon>
+                  <div class="i-ep-search text-2xl" />
+                </template> </el-step>
+              <el-step title="分析性能"><template #icon>
+                  <div class="i-ep-data-analysis text-2xl" />
+                </template> </el-step>
+            </el-steps>
+          </el-card>
+        </el-col>
+
+        <el-col :span="8">
+          <el-card class="h-37.5">
+
+            <el-select
+              v-model="dataSelectValue"
+              placeholder="选择数据"
+              size="large"
+              style="width: 240px"
+              @change="handleDataSelectChange"
+            >
+              <el-option
+                v-for="item in datasetOptions"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              />
+            </el-select>
+
+            <div class="h-4"></div>
+
+            <el-select
+              v-model="modelSelectValue"
+              placeholder="选择模型"
+              size="large"
+              style="width: 240px"
+              @change="handleModelSelectChange"
+            >
+              <el-option
+                v-for="item in modelOptions"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              />
+            </el-select>
+
+          </el-card>
+        </el-col>
+
+      </el-row>
+
+      <el-row :gutter="16">
+
+        <el-col :span="16">
+          <el-card
+            class="h-80"
+            @click="step = 2"
           >
-            <el-step title="导入数据"><template #icon>
-                <div class="i-ep-download text-2xl" />
-              </template> </el-step>
-            <el-step title="选择模型"><template #icon>
-                <div class="i-ep-set-up text-2xl" />
-              </template> </el-step>
-            <el-step title="查看异常"><template #icon>
-                <div class="i-ep-search text-2xl" />
-              </template> </el-step>
-            <el-step title="分析性能"><template #icon>
-                <div class="i-ep-data-analysis text-2xl" />
-              </template> </el-step>
-          </el-steps>
-        </el-card>
-      </el-col>
+            <div class="h-70">
+              <SingleTimeSeriseChart :timeseries="data" />
+            </div>
+          </el-card>
+        </el-col>
 
-      <el-col :span="8">
-        <el-card class="h-37.5">
-
-          <el-select
-            v-model="dataSelectValue"
-            placeholder="选择数据"
-            size="large"
-            style="width: 240px"
-            @change="handleDataSelectChange"
+        <el-col :span="8">
+          <el-card
+            class="h-80"
+            @click="step = 3"
           >
-            <el-option
-              v-for="item in datasetOptions"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-            />
-          </el-select>
+            <div class="h-80">
+              <Radar :data="{ [modelSelectValue]: radarData[modelSelectValue] }" />
+            </div>
+          </el-card>
+        </el-col>
 
-          <div class="h-4"></div>
+      </el-row>
 
-          <el-select
-            v-model="modelSelectValue"
-            placeholder="选择模型"
-            size="large"
-            style="width: 240px"
-            @change="handleModelSelectChange"
-          >
-            <el-option
-              v-for="item in modelOptions"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-            />
-          </el-select>
-
-        </el-card>
-      </el-col>
-
-    </el-row>
-
-    <el-row :gutter="16">
-
-      <el-col :span="16">
-        <el-card
-          class="h-80"
-          @click="step = 2"
-        >
-          <div class="h-70">
-            <SingleTimeSeriseChart :timeseries="data" />
-          </div>
-        </el-card>
-      </el-col>
-
-      <el-col :span="8">
-        <el-card
-          class="h-80"
-          @click="step = 3"
-        >
-          <div class="h-80">
-            <Radar :data="{ [modelSelectValue]: radarData[modelSelectValue] }" />
-          </div>
-        </el-card>
-      </el-col>
-
-    </el-row>
-
+    </div>
   </div>
 
 </template>
