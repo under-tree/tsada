@@ -1,23 +1,74 @@
 <script setup>
 import SingleTimeSeriseChart from '../components/SingleTimeSeriseChart.vue'
 import Radar from '../components/Radar.vue'
-import { ref } from 'vue'
-import { data, uData } from '../components/data'
+import { ref, computed } from 'vue'
+// import { data, uData } from '../components/data'
+import { cacheData } from './cache_data'
+import { datasetList, modelList } from './cache_data'
+import { timeseriesData } from './timeseries_data'
 
-const radarData = {
-  ARIMA: [0.42, 0.30, 0.40, 0.35, 0.50, 0.18],
-  TadGAN: [0.50, 0.64, 0.78, 0.66, 0.82, 0.51],
-  AER: [0.45, 0.53, 0.52, 0.34, 0.60, 0.33],
+function convertArray(array) {
+  return array.map((subArray, index) => [index, subArray[0]])
 }
 
-const models = ['ARIMA', 'TadGAN', 'AER']
+function convertToAnomalies(indices) {
+  if (!Array.isArray(indices) || indices.length === 0) {
+    return []
+  }
+
+  indices.sort((a, b) => a - b)
+  const anomalies = []
+  let start = indices[0]
+  let end = indices[0]
+
+  for (let i = 1; i < indices.length; i++) {
+    if (indices[i] === end + 1) {
+      end = indices[i]
+    } else {
+      anomalies.push(start === end ? [start] : [start, end])
+      start = indices[i]
+      end = indices[i]
+    }
+  }
+
+  anomalies.push(start === end ? [start] : [start, end])
+
+  return anomalies
+}
+
+const radarData = computed(() => {
+  const filteredData = cacheData.filter(item => item.dataset === dataSelectValue.value)
+  return filteredData.reduce((acc, item) => {
+    const model = item.model
+    const metrics = item.metrics
+    if (!acc[model]) {
+      acc[model] = []
+    }
+    acc[model].push(metrics['PA-F1'])
+    acc[model].push(metrics['Event-based-F1'])
+    acc[model].push(metrics['R-based-F1'])
+    acc[model].push(metrics['Affiliation-F'])
+    acc[model].push(metrics['AUC-PR'])
+    acc[model].push(metrics['AUC-ROC'])
+    return acc
+  }, {})
+})
+
+const models = modelList
 
 const step = ref(0)
 const modelSelectValue = ref('')
-const dataSelectValue = ref('')
+const dataSelectValue = ref('551_YAHOO_id_1_Synthetic_tr_500_1st_893.csv')
+
+const anomaliesData = computed(() => {
+  const selectedData = cacheData.find(
+    item => item.dataset === dataSelectValue.value && item.model === modelSelectValue.value
+  );
+  return selectedData ? convertToAnomalies(selectedData.anomaly_indices) : [];
+});
 
 const modelOptions = models.map(key => ({ value: key, label: key }))
-const datasetOptions = uData.map(value => ({ value: value.name, label: value.name }))
+const datasetOptions = datasetList.map(value => ({ value: value, label: value }))
 
 const handleDataSelectChange = (value) => {
   // console.log('Selected data:', value)
@@ -107,7 +158,10 @@ const handleModelSelectChange = (value) => {
             @click="step = 2"
           >
             <div class="h-70">
-              <SingleTimeSeriseChart :timeseries="data" />
+              <SingleTimeSeriseChart
+                :timeseries="convertArray(timeseriesData[dataSelectValue])"
+                :anomalies="anomaliesData"
+              />
             </div>
           </el-card>
         </el-col>
