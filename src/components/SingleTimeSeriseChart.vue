@@ -103,6 +103,19 @@ const disposeChart = () => {
   }
 }
 
+const updateChart = () => {
+  if (myChart) {
+    const { markLineData: newMarkLineData, markAreaData: newMarkAreaData } = convertAnomalies(props.anomalies)
+    markLineData = newMarkLineData
+    markAreaData = newMarkAreaData
+    myChart.setOption(createChartOption(props.timeseries))
+  }
+}
+
+watch(() => props.anomalies, () => {
+  updateChart()
+}, { deep: true })
+
 watch(() => props.timeseries, (newVal) => {
   if (myChart) {
     myChart.setOption(createChartOption(newVal))
