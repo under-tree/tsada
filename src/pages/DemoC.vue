@@ -4,12 +4,30 @@ import Radar from '../components/Radar.vue'
 import { ref, watch, computed } from 'vue'
 import axios from 'axios'
 import { uData } from '../components/data'
+import { cacheData } from './cache_data'
 
-const radarData = {
-  ARIMA: [0.42, 0.30, 0.40, 0.35, 0.50, 0.18],
-  TadGAN: [0.50, 0.64, 0.78, 0.66, 0.82, 0.51],
-  AER: [0.45, 0.53, 0.52, 0.34, 0.60, 0.33],
-}
+const timeseriesName = '001_NAB_id_1_Facility_tr_1007_1st_2014.csv'
+const models = [
+  'IForest',
+  'AutoEncoder',
+  'OFA',
+]
+
+const filteredData = cacheData.filter(item => item.dataset === timeseriesName && models.includes(item.model))
+const radarData = filteredData.reduce((acc, item) => {
+  const model = item.model
+  const metrics = item.metrics
+  if (!acc[model]) {
+    acc[model] = []
+  }
+  acc[model].push(metrics['PA-F1'])
+  acc[model].push(metrics['Event-based-F1'])
+  acc[model].push(metrics['R-based-F1'])
+  acc[model].push(metrics['Affiliation-F'])
+  acc[model].push(metrics['AUC-PR'])
+  acc[model].push(metrics['AUC-ROC'])
+  return acc
+}, {})
 
 const datasetValue = ref('')
 const fileValue = ref('')
@@ -17,7 +35,8 @@ const fileValue = ref('')
 const filenames = ref([])
 const files = computed(() => filenames.value.map(value => ({ value, label: value })))
 
-let datasets = ref(uData.map(value => ({ value: value.name, label: value.name })))
+const datasets = ref([])
+// let datasets = ref(uData.map(value => ({ value: value.name, label: value.name })))
 
 watch(datasetValue, async (newVal) => {
   try {
