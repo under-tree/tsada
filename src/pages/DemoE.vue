@@ -3,7 +3,7 @@ import Gantt from '../components/Gantt.vue'
 import { ref } from 'vue'
 
 const metadata = {
-  "UCR": [
+  "dataset1.csv": [
     [0, 1, 10],
     [1, 1, 10],
     [2, 1, 15],
@@ -15,7 +15,7 @@ const metadata = {
     [8, 1, 15],
     [9, 1, 10],
   ],
-  "NAB": [
+  "dataset2.csv": [
     [0, 15, 20],
     [1, 15, 20],
     [2, 15, 20],
@@ -27,7 +27,7 @@ const metadata = {
     [8, 15, 20],
     [9, 15, 20],
   ],
-  "YAHOO": [
+  "dataset3.csv": [
     [0, 20, 25],
     [1, 20, 25],
     [2, 20, 25],
@@ -39,8 +39,8 @@ const metadata = {
   ],
 }
 
-const datasets = ['UCR', 'NAB', 'YAHOO']
-const datasets2 = ['A', 'B', 'C']
+const datasets = ['dataset1.csv', 'dataset2.csv', 'dataset3.csv']
+const datasets2 = []
 
 const value3 = ref('')
 const value4 = ref('')
@@ -151,7 +151,7 @@ const handleSaveData = () => {
 
                 <el-select
                   v-model="value3"
-                  placeholder="内置数据集"
+                  placeholder="演示数据集"
                   size="large"
                   style="width: 240px"
                   @change="handleSelectChange"
@@ -168,7 +168,7 @@ const handleSaveData = () => {
 
                 <el-select
                   v-model="value4"
-                  placeholder="自定义数据"
+                  placeholder="内置数据集"
                   size="large"
                   style="width: 240px"
                   @change="handleSelectChange"

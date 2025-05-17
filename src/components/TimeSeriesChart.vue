@@ -34,7 +34,7 @@
           :disabled="!value"
           v-loading.fullscreen.lock="fullscreenLoading"
         >
-          运行
+          添加
         </el-button>
 
         <div class="my-2">
